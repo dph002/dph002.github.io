@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Dealing with no data using NumPy masked array operations | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Dealing with no data using NumPy masked array operations​          15 May 2013          引自 Remotely sensed data can be riddled with no data (or null) values. Take this grid of sea surface chlorophyll">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dealing with no data using NumPy masked array operations">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;07&#x2F;05&#x2F;Dealing-with-no-data-using-NumPy-masked-array-operations&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Dealing with no data using NumPy masked array operations​          15 May 2013          引自 Remotely sensed data can be riddled with no data (or null) values. Take this grid of sea surface chlorophyll">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;07&#x2F;05&#x2F;Dealing-with-no-data-using-NumPy-masked-array-operations&#x2F;picture&#x2F;chla_8day_2013.png">
+<meta property="og:updated_time" content="2019-07-05T14:05:09.686Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;07&#x2F;05&#x2F;Dealing-with-no-data-using-NumPy-masked-array-operations&#x2F;picture&#x2F;chla_8day_2013.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Dealing-with-no-data-using-NumPy-masked-array-operations" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/05/Dealing-with-no-data-using-NumPy-masked-array-operations/" class="article-date">
+  <time datetime="2019-07-05T07:51:20.000Z" itemprop="datePublished">2019-07-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Dealing with no data using NumPy masked array operations
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Dealing-with-no-data-using-NumPy-masked-array-operations"><a href="#Dealing-with-no-data-using-NumPy-masked-array-operations" class="headerlink" title="Dealing with no data using NumPy masked array operations"></a><a href="">Dealing with no data using NumPy masked array operations</a></h2><p>​          15 May 2013         </p>
+<p><a href="http://blog.remotesensing.io/2013/05/Dealing-with-no-data-using-NumPy-masked-array-operations#more" target="_blank" rel="noopener">引自</a></p>
+<p>Remotely sensed data can be riddled with no data (or null) values. Take this grid of sea surface chlorophyll A (CHLa) concentration for example, which represents 8 days worth of repeat observations and still has lots of big data gaps (shown in black). With products such as these that use optical data as their input, cloud cover is always going to be a problem.</p>
+<p><a href=""><img src="picture/chla_8day_2013.png" alt="CHLa concentration"></a> <em>Aqua MODIS CHLa concentration, 8 day composite, 01/01/2013 - 08/01/2013</em> <em>([oceancolor.gsfc.nasa.gov])</em></p>
+<p>If you wanted to do any raster processing with this data, identifying no data gaps as invalid is essential. And if you’re creating your own processing scripts, it can become problematic.</p>
+<p>You could simply build in conditions to ignore this number. However, I find a much nicer way to deal with no data if using Python, is with <a href="http://docs.scipy.org/doc/numpy/reference/maskedarray.html" target="_blank" rel="noopener">NumPys masked array operations</a>. They lend themselves really well to remote sensing analysis. With a basic example, here’s how this can work.</p>
+<p>(Please assume all my one dimensional arrays here are actually two dimensional and represent raster values! Of course you first need to <a href="http://blog.remotesensing.io/2013/03/using-gdal-with-python-basic-intro/" target="_blank" rel="noopener">convert your raster into a NumPy array</a>.)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line">    &gt;&gt;&gt;</span><br><span class="line">    &gt;&gt;&gt; x = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">99</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">99</span>])</span><br><span class="line">    &gt;&gt;&gt; y = numpy.ma.masked_values(x, <span class="number">99</span>)</span><br><span class="line">    &gt;&gt;&gt; y.mask</span><br><span class="line">    array([<span class="literal">False</span>, <span class="literal">False</span>, <span class="literal">False</span>,  <span class="literal">True</span>, <span class="literal">False</span>, <span class="literal">False</span>,  <span class="literal">True</span>], dtype=bool)</span><br><span class="line">    &gt;&gt;&gt; y.data</span><br><span class="line">    array([ <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>, <span class="number">99</span>,  <span class="number">5</span>,  <span class="number">6</span>, <span class="number">99</span>])</span><br><span class="line">    &gt;&gt;&gt; y</span><br><span class="line">    masked_array(data = [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> -- <span class="number">5</span> <span class="number">6</span> --],</span><br><span class="line">           mask = [<span class="literal">False</span> <span class="literal">False</span> <span class="literal">False</span>  <span class="literal">True</span> <span class="literal">False</span> <span class="literal">False</span>  <span class="literal">True</span>],</span><br><span class="line">     fill_value = <span class="number">99</span>)</span><br></pre></td></tr></table></figure>
+
+<p>If you want to visually display where your no data cells are in a GIS, you can easily change the mask into an integer array and then save it out in a visual format.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>intarray = y.mask.astype(int)</span><br><span class="line">    &gt;&gt;&gt; intarray</span><br><span class="line">    array([<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+
+<p>Equally powerful, if you already have a mask raster, you can build the mask and the data part of the masked array yourself.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = ma.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">4</span>], mask=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>])</span><br><span class="line">    &gt;&gt;&gt; t</span><br><span class="line">    masked_array(data = [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> --],</span><br><span class="line">                 mask = [<span class="literal">False</span> <span class="literal">False</span> <span class="literal">False</span> <span class="literal">False</span>  <span class="literal">True</span>],</span><br><span class="line">           fill_value = <span class="number">999999</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Once you have assigned your masked array, there are a number of other methods which can be applied, for example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>y.mean()</span><br><span class="line">    <span class="number">3.4</span></span><br><span class="line">    &gt;&gt;&gt; y.max()</span><br><span class="line">    <span class="number">6</span></span><br><span class="line">    &gt;&gt;&gt; y.sum()</span><br><span class="line">    <span class="number">17</span></span><br></pre></td></tr></table></figure>
+
+<p>These are basic operations only. The <a href="http://docs.scipy.org/doc/numpy/reference/routines.ma.html#" target="_blank" rel="noopener">documentation for masked array operations</a> shows the range of possibilities. I’ve used masked arrays very frequently when developing bespoke raster processing scripts.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/05/Dealing-with-no-data-using-NumPy-masked-array-operations/" data-id="ck2llz70h0000ocw22zwpftm8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/07/05/Using%20GDAL%20with%20Python%20a%20basic%20introduction/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Using GDAL with Python
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/05/operations/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">operations&#39;</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/windows/">windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDL/" rel="tag">IDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDL-ENVI/" rel="tag">IDL ENVI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hdf5/" rel="tag">hdf5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-%E5%8F%8D%E7%BC%96%E8%AF%91/" rel="tag">java 反编译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%C2%B7%E5%8F%8D%E7%BC%96%E8%AF%91/" rel="tag">java·反编译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%8F%8D%E7%BC%96%E8%AF%91/" rel="tag">java反编译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jupyter/" rel="tag">jupyter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ms2gt/" rel="tag">ms2gt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/IDL/" style="font-size: 10px;">IDL</a> <a href="/tags/IDL-ENVI/" style="font-size: 10px;">IDL ENVI</a> <a href="/tags/hdf5/" style="font-size: 10px;">hdf5</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java-%E5%8F%8D%E7%BC%96%E8%AF%91/" style="font-size: 10px;">java 反编译</a> <a href="/tags/java%C2%B7%E5%8F%8D%E7%BC%96%E8%AF%91/" style="font-size: 10px;">java·反编译</a> <a href="/tags/java%E5%8F%8D%E7%BC%96%E8%AF%91/" style="font-size: 10px;">java反编译</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/ms2gt/" style="font-size: 15px;">ms2gt</a> <a href="/tags/python/" style="font-size: 20px;">python</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/05/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/05/Using%20GDAL%20with%20Python%20a%20basic%20introduction/">Using GDAL with Python</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/05/Dealing-with-no-data-using-NumPy-masked-array-operations/">Dealing with no data using NumPy masked array operations</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/05/operations/">operations&#39;</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/26/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/">常用网站</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>ms2gt new gpd文件说明 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ms2gt 0.7版以后的投影设置文件gpd格式进行了修改 格式说明如下：  file must have following fields:  Map Projection: see below  Map Reference Latitude: lat0 (required except for UTM)  Map Reference Longitude: lon0 (required exce">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ms2gt new gpd文件说明">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;02&#x2F;25&#x2F;ms2gt-new-gpd%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="ms2gt 0.7版以后的投影设置文件gpd格式进行了修改 格式说明如下：  file must have following fields:  Map Projection: see below  Map Reference Latitude: lat0 (required except for UTM)  Map Reference Longitude: lon0 (required exce">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-02-27T10:18:09.210Z">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ms2gt-new-gpd文件说明" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/25/ms2gt-new-gpd%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E/" class="article-date">
+  <time datetime="2019-02-25T13:53:11.000Z" itemprop="datePublished">2019-02-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ms2gt new gpd文件说明
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ms2gt 0.7版以后的投影设置文件gpd格式进行了修改</p>
+<h1 id="格式说明如下："><a href="#格式说明如下：" class="headerlink" title="格式说明如下："></a>格式说明如下：</h1><blockquote>
+<ul>
+<li><p>file must have following fields:</p>
+</li>
+<li><p>Map Projection: see below</p>
+</li>
+<li><p>Map Reference Latitude: lat0 (required except for UTM)</p>
+</li>
+<li><p>Map Reference Longitude: lon0 (required except for UTM)</p>
+<p>may also contain optional fields:</p>
+</li>
+<li><p>Map Second Reference Latitude: lat1</p>
+</li>
+<li><p>Map Second Reference Longitude: lon1</p>
+</li>
+<li><p>Map Rotation: counter-clockwise</p>
+</li>
+<li><p>Map Scale: scale (radius units per map unit)</p>
+<blockquote>
+<p>Map ISin NZone: Number of latitudinal zones for ISin</p>
+</blockquote>
+</li>
+<li><p>Map ISin Justify: justify flag for ISin</p>
+</li>
+<li><p>Map Origin Latitude: <strong>center_lat</strong></p>
+</li>
+<li><p>Map Origin Longitude: <strong>center_lon</strong></p>
+</li>
+<li><blockquote>
+<p>Map Origin X: x0</p>
+<p>Map Origin Y: y0</p>
+<p>Map False Easting: false_easting</p>
+<p>Map False Northing: false_northing</p>
+</blockquote>
+</li>
+<li><p>Map Southern Bound: southernmost lat</p>
+</li>
+<li><p>Map Northern Bound: northernmost lat</p>
+</li>
+<li><p>Map Western Bound: westernmost longitude</p>
+</li>
+<li><p>Map Eastern Bound: easternmost longitude</p>
+</li>
+<li><p>Map Graticule Latitude Interval: default 30</p>
+</li>
+<li><p>Map Graticule Longitude Interval: default 30</p>
+</li>
+<li><p>Map Graticule Label Latitude: default 0N</p>
+</li>
+<li><p>Map Graticule Label Longitude: default 0E</p>
+</li>
+<li><p>Map CIL Detail Level: default 1</p>
+</li>
+<li><p>Map BDY Detail Level: default 0</p>
+</li>
+<li><p>Map RIV Detail Level: default 0</p>
+</li>
+<li><p>Map Eccentricity: default Clark 1866</p>
+<blockquote>
+<p>Map Eccentricity Squared: default Clark 1866</p>
+</blockquote>
+</li>
+<li><p>Map Equatorial Radius: default Clark 1866 for ellipsoid, authalic for sphere</p>
+<blockquote>
+<p>Map Polar Radius: default Clark 1866</p>
+<p>Map Center Scale: default 1.0</p>
+<p>Map UTM Zone: default 0</p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h1 id="valid-projection-names-are"><a href="#valid-projection-names-are" class="headerlink" title="valid projection names are:"></a>valid projection names are:</h1><blockquote>
+<ul>
+<li><p>Azimuthal_Equal_Area</p>
+</li>
+<li><p>Cylindrical_Equal_Area</p>
+</li>
+<li><p>Mercator</p>
+</li>
+<li><p>Mollweide</p>
+</li>
+<li><p>Orthographic</p>
+</li>
+<li><p>Sinusoidal</p>
+</li>
+<li><p>Cylindrical_Equidistant</p>
+</li>
+<li><p>Polar_Stereographic</p>
+</li>
+<li><p>Polar_Stereographic_Ellipsoid</p>
+</li>
+<li><p>Azimuthal_Equal_Area_Ellipsoid             </p>
+</li>
+<li><p>Cylindrical_Equal_Area_Ellipsoid</p>
+<blockquote>
+<p>Lambert_Conic_Conformal_Ellipsoid</p>
+</blockquote>
+</li>
+<li><p>Interupted_Homolosine_Equal_Area</p>
+<blockquote>
+<p>Albers_Conic_Equal_Area</p>
+</blockquote>
+<blockquote>
+<p>Albers_Conic_Equal_Area_Ellipsoid</p>
+</blockquote>
+</li>
+<li><p>Integerized_Sinusoidal</p>
+<blockquote>
+<p>Transverse_Mercator</p>
+</blockquote>
+<blockquote>
+<p>Transverse_Mercator_Ellipsoid</p>
+</blockquote>
+<blockquote>
+<p>Universal_Transverse_Mercator</p>
+</blockquote>
+</li>
+<li><p>or anything reasonably similar</p>
+<p>* The parameter lat1 is currently used for the Polar_Stereographic projection to define the “true at” parallel (default pole) and the Cylindrical_Equal_Area projection to define the latitude of 1:1 aspect ratio (default 30.00). In the Lambert Conic Conformal and Albers Conic Equal-Area lat0 and lat1 are the standard parallels.</p>
+</li>
+</ul>
+</blockquote>
+<h1 id="格式实例如下："><a href="#格式实例如下：" class="headerlink" title="格式实例如下："></a>格式实例如下：</h1><blockquote>
+<p>; Cold Land Processes Experiment<br>; Large Regional Study Area<br>; GEO 7.5 arcseconds<br>Map Projection:                 Cylindrical Equidistant<br>Map Reference Latitude:         0.0             ; Cold Land Processes<br>Map Reference Longitude:      0.0             ; Large-regional study area<br>Map Scale:                      1.0             ; 1 arcsecond per map unit<br>Map Origin Latitude:            0.0           ; Center lat<br>Map Origin Longitude:           180.0     ; Center lon<br>Map Equatorial Radius:          206264.797      ; (360.0 * 3600.) / (2 * !pi)<br>Grid Width:                     10800            ; LR outer = 38.45, -103.95<br>Grid Height:                    5400            ;<br>Grid Map Units per Cell:        120             ; 120” = 2’ = 1/30 deg<br>Grid Map Origin Column:         5399.5            ; Column of Center lon Map Origin<br>Grid Map Origin Row:            2699.5               ; Row of Center lat  Map Origin</p>
+</blockquote>
+<p>其中</p>
+<ul>
+<li><p>;是注释，忽略;后面的内容</p>
+</li>
+<li><p>上面的这个是 0-360度，-90-90度的等经纬度投影，5400行，10800列，</p>
+</li>
+<li><p>左上角是(0度，北纬90度)</p>
+</li>
+<li><p>0-360总宽度计算Total width= 648000*2/(Grid Map Units per Cell)/(Map Scale)</p>
+</li>
+<li><p>-90-90 总高度计算 Total Height= 648000/(Grid Map Units per Cell)/(Map Scale)</p>
+</li>
+</ul>
+<h1 id="全球等经纬度投影的实例的-gpd文件"><a href="#全球等经纬度投影的实例的-gpd文件" class="headerlink" title="全球等经纬度投影的实例的.gpd文件"></a>全球等经纬度投影的实例的.gpd文件</h1><p> <strong>** 保存格式必须是unix格式！！！！！**</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">; 全球等经纬度投影设置,代替mpp</span><br><span class="line">; ** 保存格式必须是unix格式！！！！！**</span><br><span class="line">Map Projection:                 Cylindrical Equidistant</span><br><span class="line">Map Reference Latitude:         0.0             ; Cold Land Processes</span><br><span class="line">Map Reference Longitude:        0.0             ; Large-regional study area</span><br><span class="line">Map Scale:                      1.0             ; 1 arcsecond per map unit</span><br><span class="line">Map Origin Latitude:            0.0           ; center Lat</span><br><span class="line">Map Origin Longitude:           180.0         ; center Lon</span><br><span class="line">Map Equatorial Radius:          206264.797      ; (360.0 * 3600.) / (2 * !pi)</span><br><span class="line">; 网格设置</span><br><span class="line"></span><br><span class="line">;不同分辨率的设置计算说明 </span><br><span class="line">;Grid Width:  648000*2/(Grid Map Units per Cell)/(Map Scale)</span><br><span class="line">;Grid Height: 648000/(Grid Map Units per Cell)/(Map Scale)</span><br><span class="line">;Grid Map Origin Column: (Grid Width)/2-0.5  ; Column of center Lon  </span><br><span class="line">;Grid Map Origin Row:         (Grid Height)-0.5   ; Row of center Lat  </span><br><span class="line"></span><br><span class="line">;1km </span><br><span class="line">;Grid Width:                     34560            ; = 648000*2/(37.5)/(Map Scale)</span><br><span class="line">;Grid Height:                    17280            ; = 648000/(37.5)/(Map Scale)</span><br><span class="line">;Grid Map Units per Cell:        37.5              ; 37.5&quot; = 0.625&apos; = 0.01046667 deg =~ 1km  </span><br><span class="line">;Grid Map Origin Column:         17279.5            ; Column of center Lon  =Width/2-0.5</span><br><span class="line">;Grid Map Origin Row:            8639.5            ; Row of center Lat  =Height/2-0.5</span><br><span class="line"></span><br><span class="line">;2km </span><br><span class="line">;Grid Width:                     17280            ; = 648000*2/(75)/(Map Scale)</span><br><span class="line">;Grid Height:                    8640            ;  = 648000/(75)/(Map Scale)</span><br><span class="line">;Grid Map Units per Cell:        75              ; 75&quot; = 1.25&apos; = 0.02083333 deg =~ 1km  </span><br><span class="line">;Grid Map Origin Column:         8639.5            ; Column of center Lon  =Width/2-0.5</span><br><span class="line">;Grid Map Origin Row:            4319.5            ; Row of center Lat     =Height/2-0.5</span><br><span class="line"></span><br><span class="line">;4km</span><br><span class="line">Grid Width:                     8640            ; = 648000*2/(150)/(Map Scale)</span><br><span class="line">Grid Height:                    4320            ; = 648000/(150)/(Map Scale)</span><br><span class="line">Grid Map Units per Cell:        150             ; 150&quot; = 2.5&apos; = 0.0416667 deg =~ 4km  </span><br><span class="line">Grid Map Origin Column:         4319.5            ; Column of center Lon  =Width/2-0.5</span><br><span class="line">Grid Map Origin Row:            2159.5            ; Row of center Lat  =Height/2-0.5</span><br><span class="line"></span><br><span class="line">;9km</span><br><span class="line">;Grid Width:                     4320            ; = 648000*2/(300)/(Map Scale)</span><br><span class="line">;Grid Height:                    2160            ; = 648000/(300)/(Map Scale)</span><br><span class="line">;Grid Map Units per Cell:        300             ; 300&quot; = 5&apos; = 0.0833333 deg =~ 9km  </span><br><span class="line">;Grid Map Origin Column:         1079.5            ; Column of center Lon  =Width/2-0.5</span><br><span class="line">;Grid Map Origin Row:            1199.5   ; Row of center Lat  =Height/2-0.5</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/25/ms2gt-new-gpd%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E/" data-id="ck2llz717000uocw24n912qc1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/02/28/imagemagick%E7%94%A8%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          imagemagick用法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/22/%E5%85%B3%E4%BA%8E%E5%B8%A6%E7%8A%B6%E7%96%B1%E7%96%B9/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">关于带状疱疹</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/windows/">windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDL/" rel="tag">IDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDL-ENVI/" rel="tag">IDL ENVI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hdf5/" rel="tag">hdf5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-%E5%8F%8D%E7%BC%96%E8%AF%91/" rel="tag">java 反编译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%C2%B7%E5%8F%8D%E7%BC%96%E8%AF%91/" rel="tag">java·反编译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%8F%8D%E7%BC%96%E8%AF%91/" rel="tag">java反编译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jupyter/" rel="tag">jupyter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ms2gt/" rel="tag">ms2gt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/IDL/" style="font-size: 10px;">IDL</a> <a href="/tags/IDL-ENVI/" style="font-size: 10px;">IDL ENVI</a> <a href="/tags/hdf5/" style="font-size: 10px;">hdf5</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java-%E5%8F%8D%E7%BC%96%E8%AF%91/" style="font-size: 10px;">java 反编译</a> <a href="/tags/java%C2%B7%E5%8F%8D%E7%BC%96%E8%AF%91/" style="font-size: 10px;">java·反编译</a> <a href="/tags/java%E5%8F%8D%E7%BC%96%E8%AF%91/" style="font-size: 10px;">java反编译</a> <a href="/tags/jupyter/" style="font-size: 10px;">jupyter</a> <a href="/tags/ms2gt/" style="font-size: 15px;">ms2gt</a> <a href="/tags/python/" style="font-size: 20px;">python</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/05/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/05/Using%20GDAL%20with%20Python%20a%20basic%20introduction/">Using GDAL with Python</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/05/Dealing-with-no-data-using-NumPy-masked-array-operations/">Dealing with no data using NumPy masked array operations</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/05/operations/">operations&#39;</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/26/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/">常用网站</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
