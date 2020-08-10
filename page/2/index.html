@@ -61,6 +61,113 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-水色软件分析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/11/%E6%B0%B4%E8%89%B2%E8%BD%AF%E4%BB%B6%E5%88%86%E6%9E%90/" class="article-date">
+  <time datetime="2019-05-11T14:39:39.000Z" itemprop="datePublished">2019-05-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/11/%E6%B0%B4%E8%89%B2%E8%BD%AF%E4%BB%B6%E5%88%86%E6%9E%90/">水色软件分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>L2AGEN</p>
+<p>sub_4010e1</p>
+<p>-&gt; 43a48a</p>
+<p>.text:0043A48A call    cwnd_init2 —-&gt; 初始化显示屏幕，这里可以跳过</p>
+<p>text:0043ACE7 call    showImg1</p>
+<p>text:0043ACF4 call    showImg2</p>
+<p>.text:0043A414 call    bathy_init</p>
+<p>.text:00439220 ; int __cdecl COCTSL1TOL2(char *FullPath, char *)</p>
+<p> 跳过1. 004370EE:  5byes,搜索e87aa0fcff8b4dfc 修改前5字节为90 90 90 90 90</p>
+<p>跳过2 0043A4E8:5bytes ，搜索e87b6cfcff8b8d0cbeffffe8 修改前5字节为90 90 90 90 90</p>
+<p>跳过3.0043acd7:  搜索 508b8d94c9ffff51，前两字节改为 EB 20</p>
+<p>跳过4.0043AD24:搜索 528b8594c9ffff508b8d，前两字节改为eb 36</p>
+<p>跳过5. 0043A48A 搜索 E8 03 70 FC FF 8B 95 0C BE FF FF 83 BA 88 00 00 前5个改成90 90 90 90 90</p>
+<p>这是40行一处理的循环：</p>
+<p>这样就去掉了屏幕显示功能</p>
+<p>.text:0043A79D jl      short loc_43A7A8<br>.text:0043A79F cmp     [ebp+var_3780], 0<br>.text:0043A7A6 jnz     short loc_43A7B4<br>.text:0043A7A8<br>.text:0043A7A8 loc_43A7A8:                             ; CODE XREF: COCTSL1TOL2+157Dj<br>.text:0043A7A8 mov     [ebp+var_3788], 28h<br>.text:0043A7B2 jmp     short Error1</p>
+<p>断点情况:</p>
+<p>Abs 0x4370E6    Break             Default<br>Abs 0x4370EE    Break             Default<br>Abs 0x439220    Break COCTSL1TOL2 Default<br>Abs 0x43A414    Break             Default<br>Abs 0x43A465    Break loc_43A465  Default<br>Abs 0x43A49C    Break             Default<br>Abs 0x43A4E8    Break             Default<br>Abs 0x43A4F3    Break             Default<br>Abs 0x43A51B    Break             Default<br>Abs 0x43A523    Break loc_43A523  Default<br>Abs 0x43A9AC    Break             Default<br>Abs 0x43ACD7    Break             Default<br>Abs 0x43ACE7    Break             Default<br>Abs 0x43ACF4    Break             Default<br>Abs 0x43ACF9    Break loc_43ACF9  DefaultG</p>
+<ul>
+<li><p>py6s的使用</p>
+</li>
+<li><p>L1A TO l1b 与系统的L1B的比较</p>
+</li>
+</ul>
+<p>argparser</p>
+<p>pymodis</p>
+<p>pyinstaller 把python编译成exe文件</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/11/%E6%B0%B4%E8%89%B2%E8%BD%AF%E4%BB%B6%E5%88%86%E6%9E%90/" data-id="ck3dq3h0e001e6gw283bz98mv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-关闭系统休眠" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/26/%E5%85%B3%E9%97%AD%E7%B3%BB%E7%BB%9F%E4%BC%91%E7%9C%A0/" class="article-date">
+  <time datetime="2019-04-26T11:00:42.000Z" itemprop="datePublished">2019-04-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/windows/">windows</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/26/%E5%85%B3%E9%97%AD%E7%B3%BB%E7%BB%9F%E4%BC%91%E7%9C%A0/">&#39;关闭系统休眠&#39;</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>用管理员模式打开cmd,执行：即可</p>
+<p>powercfg -h off</p>
+<p>开启休眠</p>
+<p>powercfg -h on</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/26/%E5%85%B3%E9%97%AD%E7%B3%BB%E7%BB%9F%E4%BC%91%E7%9C%A0/" data-id="ck3dq3h0c00196gw27n7h3l9x" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hdf5删除数据集的问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/03/14/hdf5%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E9%97%AE%E9%A2%98/" class="article-date">
@@ -95,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/14/hdf5%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E9%97%AE%E9%A2%98/" data-id="ck2lo0gwr000jbkw2ahtqgmpm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/14/hdf5%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E9%97%AE%E9%A2%98/" data-id="ck3dq3gzp000b6gw24lhr471u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hdf5/" rel="tag">hdf5</a></li></ul>
@@ -140,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/14/hexo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" data-id="ck2lo0gwn000dbkw24tatdgl9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/14/hexo%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" data-id="ck3dq3gzt000h6gw23qzk0tdn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
@@ -208,7 +315,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/13/Jupyter%E5%AE%89%E8%A3%85%E5%A4%9AKernel/" data-id="ck2lo0gwi0005bkw28zq85vcs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/13/Jupyter%E5%AE%89%E8%A3%85%E5%A4%9AKernel/" data-id="ck3dq3gzl00056gw26iv3aop2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jupyter/" rel="tag">jupyter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
@@ -246,7 +353,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/05/netpbm-GnuWin32/" data-id="ck2lo0gwz000wbkw21aaq1mqf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/05/netpbm-GnuWin32/" data-id="ck3dq3h00000u6gw28i85fju8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -288,7 +395,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/03/IDL%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%9F%A9%E9%98%B5%E6%AF%94%E8%BE%83%E5%A4%A7%E5%B0%8F%E5%8F%96%E5%80%BC%E7%9A%84%E6%8A%80%E5%B7%A7/" data-id="ck2lo0gwd0001bkw275x6gin2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/03/IDL%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%9F%A9%E9%98%B5%E6%AF%94%E8%BE%83%E5%A4%A7%E5%B0%8F%E5%8F%96%E5%80%BC%E7%9A%84%E6%8A%80%E5%B7%A7/" data-id="ck3dq3gzk00046gw20w6i7nb4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDL-ENVI/" rel="tag">IDL ENVI</a></li></ul>
@@ -329,7 +436,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/01/Luyten-java%E7%9A%84%E5%8F%8D%E7%BC%96%E8%AF%91%E5%99%A8/" data-id="ck2lo0gwl000abkw2cto2cnkt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/01/Luyten-java%E7%9A%84%E5%8F%8D%E7%BC%96%E8%AF%91%E5%99%A8/" data-id="ck3dq3gzm00086gw25u2y1llh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java-%E5%8F%8D%E7%BC%96%E8%AF%91/" rel="tag">java 反编译</a></li></ul>
@@ -369,7 +476,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/01/jadx-java%E7%9A%84%E5%8F%8D%E7%BC%96%E8%AF%91%E5%99%A8/" data-id="ck2lo0gws000lbkw2bivh8hmh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/01/jadx-java%E7%9A%84%E5%8F%8D%E7%BC%96%E8%AF%91%E5%99%A8/" data-id="ck3dq3gzx000o6gw2ct1zbq55" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java%C2%B7%E5%8F%8D%E7%BC%96%E8%AF%91/" rel="tag">java·反编译</a></li></ul>
@@ -408,84 +515,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/01/jd-gui-java%E7%9A%84%E5%8F%8D%E7%BC%96%E8%AF%91%E5%99%A8/" data-id="ck2lo0gwt000nbkw2b0g4hbw9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/01/jd-gui-java%E7%9A%84%E5%8F%8D%E7%BC%96%E8%AF%91%E5%99%A8/" data-id="ck3dq3gzz000t6gw2426zdgze" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java%E5%8F%8D%E7%BC%96%E8%AF%91/" rel="tag">java反编译</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-G-Projector" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/01/G-Projector/" class="article-date">
-  <time datetime="2019-03-01T00:35:49.000Z" itemprop="datePublished">2019-03-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/01/G-Projector/">G.Projector</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这个软件，可以把几种投影的图片直接进行投影变换，比较方便</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/01/G-Projector/" data-id="ck2lo0gwe0002bkw27d9f82dy" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-panoplywin的用法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/02/28/panoplywin%E7%9A%84%E7%94%A8%E6%B3%95/" class="article-date">
-  <time datetime="2019-02-28T12:27:00.000Z" itemprop="datePublished">2019-02-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/28/panoplywin%E7%9A%84%E7%94%A8%E6%B3%95/">panoplywin的用法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/28/panoplywin%E7%9A%84%E7%94%A8%E6%B3%95/" data-id="ck2lo0gx10010bkw2gjz88j4q" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -550,23 +584,23 @@
       <ul>
         
           <li>
+            <a href="/2019/11/25/%E4%B8%80%E4%BA%9Bpython%E6%A8%A1%E5%9D%97/">一些python模块</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/25/WSL-ubuntu%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE/">WSL ubuntu系统设置</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/22/opencv/">opencv</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/05/hello-world/">Hello World</a>
           </li>
         
           <li>
             <a href="/2019/07/05/Using%20GDAL%20with%20Python%20a%20basic%20introduction/">Using GDAL with Python</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/05/Dealing-with-no-data-using-NumPy-masked-array-operations/">Dealing with no data using NumPy masked array operations</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/05/operations/">operations&#39;</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/26/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/">常用网站</a>
           </li>
         
       </ul>

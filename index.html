@@ -61,6 +61,149 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-一些python模块" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/25/%E4%B8%80%E4%BA%9Bpython%E6%A8%A1%E5%9D%97/" class="article-date">
+  <time datetime="2019-11-25T13:52:00.000Z" itemprop="datePublished">2019-11-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/25/%E4%B8%80%E4%BA%9Bpython%E6%A8%A1%E5%9D%97/">一些python模块</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MS-Visio-file-vsd-vsdx-to-images-converter"><a href="#MS-Visio-file-vsd-vsdx-to-images-converter" class="headerlink" title="MS-Visio file (.vsd, .vsdx) to images converter"></a>MS-Visio file (.vsd, .vsdx) to images converter</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install visio2img</span><br></pre></td></tr></table></figure>
+<h1 id="python-pptx"><a href="#python-pptx" class="headerlink" title="python-pptx"></a>python-pptx</h1><ul>
+<li>How to set image auto center</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">img.left = int((prs.slide_width - img.width) / 2)</span><br><span class="line">img.top = int((prs.slide_height - img.height) / 2)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://stackoverflow.com/questions/49384134/add-bullet-list-using-python-pptx" target="_blank" rel="noopener">Add Bullet list using python-pptx</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p = text_frame.add_paragraph()</span><br><span class="line">p.level = 0</span><br><span class="line">p.text = &quot;First&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p = text_frame.paragraphs[0]</span><br><span class="line">p.level = 0</span><br><span class="line">p.text = &quot;First&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><a href="https://github.com/scanny/python-pptx/issues/217" target="_blank" rel="noopener">allow for slide to be added with a specific index</a></p>
+<p>feature: create_slide(slideNumber) copy_slide(slideNumber)</p>
+</li>
+</ul>
+<h1 id="pip-install-pptx-downsizer"><a href="#pip-install-pptx-downsizer" class="headerlink" title="pip install pptx-downsizer"></a>pip install pptx-downsizer</h1><ol>
+<li><p>Tool for downsizing Microsoft PowerPoint pptx presentations.</p>
+<h1 id="pics2word"><a href="#pics2word" class="headerlink" title="pics2word"></a>pics2word</h1><p>pip install pics2word</p>
+<p>A command line program to copy a large number of pictures into a word document.</p>
+<h1 id="pymodis"><a href="#pymodis" class="headerlink" title="pymodis"></a>pymodis</h1></li>
+</ol>
+<h1 id="wxpython"><a href="#wxpython" class="headerlink" title="wxpython"></a>wxpython</h1><h1 id="numba"><a href="#numba" class="headerlink" title="numba"></a>numba</h1><h1 id="opc-diag"><a href="#opc-diag" class="headerlink" title="opc-diag"></a>opc-diag</h1><h1 id="如何查找python库的老版本"><a href="#如何查找python库的老版本" class="headerlink" title="如何查找python库的老版本"></a>如何查找python库的老版本</h1><p>在scikit-image中，网上的例子有一个标准的美女图，lena，但是在scikit-image 0.10.0之后的版本中没有了，这样，我们到<a href="https://github.com/scikit-image/scikit-image，中点击branches，分支，然后查找带0.10.x的版本，下载下来，里面就有该lena.png的文件，导出使用即可" target="_blank" rel="noopener">https://github.com/scikit-image/scikit-image，中点击branches，分支，然后查找带0.10.x的版本，下载下来，里面就有该lena.png的文件，导出使用即可</a></p>
+<h1 id="文字扫描软件tesseract-ocr"><a href="#文字扫描软件tesseract-ocr" class="headerlink" title="文字扫描软件tesseract-ocr"></a>文字扫描软件<a href="https://github.com/tesseract-ocr" target="_blank" rel="noopener">tesseract-ocr</a></h1><p>开源的基于机器学习的文字扫描软件，有多种语言的训练数据，包括中文</p>
+<h1 id="Scandir-a-directory-iterator-that-returns-all-file-info-the-OS-provides"><a href="#Scandir-a-directory-iterator-that-returns-all-file-info-the-OS-provides" class="headerlink" title="Scandir, a directory iterator that returns all file info the OS provides."></a><strong><a href="https://pypi.org/project/scandir" target="_blank" rel="noopener">Scandir</a></strong>, a directory iterator that returns all file info the OS provides.</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/25/%E4%B8%80%E4%BA%9Bpython%E6%A8%A1%E5%9D%97/" data-id="ck3dq3h0700146gw23c494xma" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-WSL-ubuntu系统设置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/25/WSL-ubuntu%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE/" class="article-date">
+  <time datetime="2019-11-25T01:14:49.000Z" itemprop="datePublished">2019-11-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/25/WSL-ubuntu%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE/">WSL ubuntu系统设置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="windows-WSL-ubuntu子系统"><a href="#windows-WSL-ubuntu子系统" class="headerlink" title="windows WSL ubuntu子系统"></a>windows WSL ubuntu子系统</h1><p>清华源</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/11/25/WSL-ubuntu%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/25/WSL-ubuntu%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE/" data-id="ck3e0nez20000tgw26rcv08mf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-opencv" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/22/opencv/" class="article-date">
+  <time datetime="2019-11-22T13:10:24.000Z" itemprop="datePublished">2019-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/22/opencv/">opencv</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="opencv-中-SIFT尺度不变算法可用的版本"><a href="#opencv-中-SIFT尺度不变算法可用的版本" class="headerlink" title="opencv 中 SIFT尺度不变算法可用的版本"></a>opencv 中 SIFT尺度不变算法可用的版本</h1><p>我的解决方法是：先卸载opencv，再将opencv版本改为3.4.2。</p>
+<p> <strong>pip install opencv-python==3.4.2.16</strong></p>
+<p> <strong>pip install opencv-contrib-python==3.4.2.16</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/22/opencv/" data-id="ck3dq3h02000y6gw24vecdrou" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/05/hello-world/" class="article-date">
@@ -100,7 +243,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/05/hello-world/" data-id="ck2lo0gwo000fbkw2cuhv4k2c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/05/hello-world/" data-id="ck3dq3gzq000e6gw27vj1dys7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -142,7 +285,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/05/Using%20GDAL%20with%20Python%20a%20basic%20introduction/" data-id="ck2lo0gwm000bbkw27wu7gk6k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/05/Using%20GDAL%20with%20Python%20a%20basic%20introduction/" data-id="ck3dq3gzr000f6gw2goaubku3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
@@ -199,7 +342,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/05/Dealing-with-no-data-using-NumPy-masked-array-operations/" data-id="ck2lo0gw60000bkw200tze07d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/05/Dealing-with-no-data-using-NumPy-masked-array-operations/" data-id="ck3dq3gzf00016gw2biku97z1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -235,7 +378,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/05/operations/" data-id="ck2lo0gwx000ubkw2dtcs073a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/05/operations/" data-id="ck3dq3h0300106gw22mfid707" class="article-share-link">Share</a>
       
       
     </footer>
@@ -275,7 +418,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/26/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/" data-id="ck2lo0gx5001cbkw2ahiy0jje" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/26/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/" data-id="ck3dq3h0d001b6gw2bwd4fbxl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -339,7 +482,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/26/%E9%81%A5%E6%84%9F%E7%9A%84%E9%A2%84%E8%AE%BE%E6%9D%A1%E4%BB%B6/" data-id="ck2lo0gx5001dbkw2a75na8yz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/26/%E9%81%A5%E6%84%9F%E7%9A%84%E9%A2%84%E8%AE%BE%E6%9D%A1%E4%BB%B6/" data-id="ck3dq3h0f001g6gw282p9by2w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -458,175 +601,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/26/Py6SforAtmosCorrect/" data-id="ck2lo0gxb001ibkw27562cbcp" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-水色软件分析" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/11/%E6%B0%B4%E8%89%B2%E8%BD%AF%E4%BB%B6%E5%88%86%E6%9E%90/" class="article-date">
-  <time datetime="2019-05-11T14:39:39.000Z" itemprop="datePublished">2019-05-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/11/%E6%B0%B4%E8%89%B2%E8%BD%AF%E4%BB%B6%E5%88%86%E6%9E%90/">水色软件分析</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>L2AGEN</p>
-<p>sub_4010e1</p>
-<p>-&gt; 43a48a</p>
-<p>.text:0043A48A call    cwnd_init2 —-&gt; 初始化显示屏幕，这里可以跳过</p>
-<p>text:0043ACE7 call    showImg1</p>
-<p>text:0043ACF4 call    showImg2</p>
-<p>.text:0043A414 call    bathy_init</p>
-<p>.text:00439220 ; int __cdecl COCTSL1TOL2(char *FullPath, char *)</p>
-<p> 跳过1. 004370EE:  5byes,搜索e87aa0fcff8b4dfc 修改前5字节为90 90 90 90 90</p>
-<p>跳过2 0043A4E8:5bytes ，搜索e87b6cfcff8b8d0cbeffffe8 修改前5字节为90 90 90 90 90</p>
-<p>跳过3.0043acd7:  搜索 508b8d94c9ffff51，前两字节改为 EB 20</p>
-<p>跳过4.0043AD24:搜索 528b8594c9ffff508b8d，前两字节改为eb 36</p>
-<p>跳过5. 0043A48A 搜索 E8 03 70 FC FF 8B 95 0C BE FF FF 83 BA 88 00 00 前5个改成90 90 90 90 90</p>
-<p>这是40行一处理的循环：</p>
-<p>这样就去掉了屏幕显示功能</p>
-<p>.text:0043A79D jl      short loc_43A7A8<br>.text:0043A79F cmp     [ebp+var_3780], 0<br>.text:0043A7A6 jnz     short loc_43A7B4<br>.text:0043A7A8<br>.text:0043A7A8 loc_43A7A8:                             ; CODE XREF: COCTSL1TOL2+157Dj<br>.text:0043A7A8 mov     [ebp+var_3788], 28h<br>.text:0043A7B2 jmp     short Error1</p>
-<p>断点情况:</p>
-<p>Abs 0x4370E6    Break             Default<br>Abs 0x4370EE    Break             Default<br>Abs 0x439220    Break COCTSL1TOL2 Default<br>Abs 0x43A414    Break             Default<br>Abs 0x43A465    Break loc_43A465  Default<br>Abs 0x43A49C    Break             Default<br>Abs 0x43A4E8    Break             Default<br>Abs 0x43A4F3    Break             Default<br>Abs 0x43A51B    Break             Default<br>Abs 0x43A523    Break loc_43A523  Default<br>Abs 0x43A9AC    Break             Default<br>Abs 0x43ACD7    Break             Default<br>Abs 0x43ACE7    Break             Default<br>Abs 0x43ACF4    Break             Default<br>Abs 0x43ACF9    Break loc_43ACF9  DefaultG</p>
-<ul>
-<li><p>py6s的使用</p>
-</li>
-<li><p>L1A TO l1b 与系统的L1B的比较</p>
-</li>
-</ul>
-<p>argparser</p>
-<p>pymodis</p>
-<p>pyinstaller 把python编译成exe文件</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/11/%E6%B0%B4%E8%89%B2%E8%BD%AF%E4%BB%B6%E5%88%86%E6%9E%90/" data-id="ck2lo0gx40019bkw2azfa78m9" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-一些python模块" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/30/%E4%B8%80%E4%BA%9Bpython%E6%A8%A1%E5%9D%97/" class="article-date">
-  <time datetime="2019-04-30T13:52:49.000Z" itemprop="datePublished">2019-04-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/30/%E4%B8%80%E4%BA%9Bpython%E6%A8%A1%E5%9D%97/">一些python模块</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="MS-Visio-file-vsd-vsdx-to-images-converter"><a href="#MS-Visio-file-vsd-vsdx-to-images-converter" class="headerlink" title="MS-Visio file (.vsd, .vsdx) to images converter"></a>MS-Visio file (.vsd, .vsdx) to images converter</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install visio2img</span><br></pre></td></tr></table></figure>
-<h1 id="python-pptx"><a href="#python-pptx" class="headerlink" title="python-pptx"></a>python-pptx</h1><ul>
-<li>How to set image auto center</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">img.left = int((prs.slide_width - img.width) / 2)</span><br><span class="line">img.top = int((prs.slide_height - img.height) / 2)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><a href="https://stackoverflow.com/questions/49384134/add-bullet-list-using-python-pptx" target="_blank" rel="noopener">Add Bullet list using python-pptx</a></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p = text_frame.add_paragraph()</span><br><span class="line">p.level = 0</span><br><span class="line">p.text = &quot;First&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p = text_frame.paragraphs[0]</span><br><span class="line">p.level = 0</span><br><span class="line">p.text = &quot;First&quot;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><a href="https://github.com/scanny/python-pptx/issues/217" target="_blank" rel="noopener">allow for slide to be added with a specific index</a></p>
-<p>feature: create_slide(slideNumber) copy_slide(slideNumber)</p>
-</li>
-</ul>
-<h1 id="pip-install-pptx-downsizer"><a href="#pip-install-pptx-downsizer" class="headerlink" title="pip install pptx-downsizer"></a>pip install pptx-downsizer</h1><ol>
-<li><p>Tool for downsizing Microsoft PowerPoint pptx presentations.</p>
-<h1 id="pics2word"><a href="#pics2word" class="headerlink" title="pics2word"></a>pics2word</h1><p>pip install pics2word</p>
-<p>A command line program to copy a large number of pictures into a word document.</p>
-<h1 id="pymodis"><a href="#pymodis" class="headerlink" title="pymodis"></a>pymodis</h1></li>
-</ol>
-<h1 id="wxpython"><a href="#wxpython" class="headerlink" title="wxpython"></a>wxpython</h1><h1 id="numba"><a href="#numba" class="headerlink" title="numba"></a>numba</h1><h1 id="opc-diag"><a href="#opc-diag" class="headerlink" title="opc-diag"></a>opc-diag</h1>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/30/%E4%B8%80%E4%BA%9Bpython%E6%A8%A1%E5%9D%97/" data-id="ck2lo0gx20012bkw25r8w48cu" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-关闭系统休眠" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/26/%E5%85%B3%E9%97%AD%E7%B3%BB%E7%BB%9F%E4%BC%91%E7%9C%A0/" class="article-date">
-  <time datetime="2019-04-26T11:00:42.000Z" itemprop="datePublished">2019-04-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/windows/">windows</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/26/%E5%85%B3%E9%97%AD%E7%B3%BB%E7%BB%9F%E4%BC%91%E7%9C%A0/">&#39;关闭系统休眠&#39;</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>用管理员模式打开cmd,执行：即可</p>
-<p>powercfg -h off</p>
-<p>开启休眠</p>
-<p>powercfg -h on</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/26/%E5%85%B3%E9%97%AD%E7%B3%BB%E7%BB%9F%E4%BC%91%E7%9C%A0/" data-id="ck2lo0gx30016bkw21gm6gixu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/26/Py6SforAtmosCorrect/" data-id="ck3dq3h0i001j6gw2drv66i6p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -693,23 +668,23 @@
       <ul>
         
           <li>
+            <a href="/2019/11/25/%E4%B8%80%E4%BA%9Bpython%E6%A8%A1%E5%9D%97/">一些python模块</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/25/WSL-ubuntu%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE/">WSL ubuntu系统设置</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/22/opencv/">opencv</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/05/hello-world/">Hello World</a>
           </li>
         
           <li>
             <a href="/2019/07/05/Using%20GDAL%20with%20Python%20a%20basic%20introduction/">Using GDAL with Python</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/05/Dealing-with-no-data-using-NumPy-masked-array-operations/">Dealing with no data using NumPy masked array operations</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/05/operations/">operations&#39;</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/26/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99/">常用网站</a>
           </li>
         
       </ul>

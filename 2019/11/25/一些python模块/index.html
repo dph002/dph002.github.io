@@ -5,14 +5,17 @@
   
 
   
-  <title>netpbm_GnuWin32 | Hexo</title>
+  <title>一些python模块 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="netpbm_GnuWin32">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;03&#x2F;05&#x2F;netpbm-GnuWin32&#x2F;index.html">
+  <meta name="description" content="MS-Visio file (.vsd, .vsdx) to images converter1pip install visio2img python-pptx How to set image auto center  12img.left = int((prs.slide_width - img.width) &#x2F; 2)img.top = int((prs.slide_height - img">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一些python模块">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;25&#x2F;%E4%B8%80%E4%BA%9Bpython%E6%A8%A1%E5%9D%97&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="MS-Visio file (.vsd, .vsdx) to images converter1pip install visio2img python-pptx How to set image auto center  12img.left = int((prs.slide_width - img.width) &#x2F; 2)img.top = int((prs.slide_height - img">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-03-05T14:21:49.252Z">
+<meta property="og:updated_time" content="2019-11-25T01:17:39.777Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -60,10 +63,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-netpbm-GnuWin32" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-一些python模块" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/03/05/netpbm-GnuWin32/" class="article-date">
-  <time datetime="2019-03-05T14:21:49.000Z" itemprop="datePublished">2019-03-05</time>
+    <a href="/2019/11/25/%E4%B8%80%E4%BA%9Bpython%E6%A8%A1%E5%9D%97/" class="article-date">
+  <time datetime="2019-11-25T13:52:00.000Z" itemprop="datePublished">2019-11-25</time>
 </a>
     
   </div>
@@ -74,7 +77,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      netpbm_GnuWin32
+      一些python模块
     </h1>
   
 
@@ -82,32 +85,50 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="MS-Visio-file-vsd-vsdx-to-images-converter"><a href="#MS-Visio-file-vsd-vsdx-to-images-converter" class="headerlink" title="MS-Visio file (.vsd, .vsdx) to images converter"></a>MS-Visio file (.vsd, .vsdx) to images converter</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install visio2img</span><br></pre></td></tr></table></figure>
+<h1 id="python-pptx"><a href="#python-pptx" class="headerlink" title="python-pptx"></a>python-pptx</h1><ul>
+<li>How to set image auto center</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">img.left = int((prs.slide_width - img.width) / 2)</span><br><span class="line">img.top = int((prs.slide_height - img.height) / 2)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://stackoverflow.com/questions/49384134/add-bullet-list-using-python-pptx" target="_blank" rel="noopener">Add Bullet list using python-pptx</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p = text_frame.add_paragraph()</span><br><span class="line">p.level = 0</span><br><span class="line">p.text = &quot;First&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p = text_frame.paragraphs[0]</span><br><span class="line">p.level = 0</span><br><span class="line">p.text = &quot;First&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><a href="https://github.com/scanny/python-pptx/issues/217" target="_blank" rel="noopener">allow for slide to be added with a specific index</a></p>
+<p>feature: create_slide(slideNumber) copy_slide(slideNumber)</p>
+</li>
+</ul>
+<h1 id="pip-install-pptx-downsizer"><a href="#pip-install-pptx-downsizer" class="headerlink" title="pip install pptx-downsizer"></a>pip install pptx-downsizer</h1><ol>
+<li><p>Tool for downsizing Microsoft PowerPoint pptx presentations.</p>
+<h1 id="pics2word"><a href="#pics2word" class="headerlink" title="pics2word"></a>pics2word</h1><p>pip install pics2word</p>
+<p>A command line program to copy a large number of pictures into a word document.</p>
+<h1 id="pymodis"><a href="#pymodis" class="headerlink" title="pymodis"></a>pymodis</h1></li>
+</ol>
+<h1 id="wxpython"><a href="#wxpython" class="headerlink" title="wxpython"></a>wxpython</h1><h1 id="numba"><a href="#numba" class="headerlink" title="numba"></a>numba</h1><h1 id="opc-diag"><a href="#opc-diag" class="headerlink" title="opc-diag"></a>opc-diag</h1><h1 id="如何查找python库的老版本"><a href="#如何查找python库的老版本" class="headerlink" title="如何查找python库的老版本"></a>如何查找python库的老版本</h1><p>在scikit-image中，网上的例子有一个标准的美女图，lena，但是在scikit-image 0.10.0之后的版本中没有了，这样，我们到<a href="https://github.com/scikit-image/scikit-image，中点击branches，分支，然后查找带0.10.x的版本，下载下来，里面就有该lena.png的文件，导出使用即可" target="_blank" rel="noopener">https://github.com/scikit-image/scikit-image，中点击branches，分支，然后查找带0.10.x的版本，下载下来，里面就有该lena.png的文件，导出使用即可</a></p>
+<h1 id="文字扫描软件tesseract-ocr"><a href="#文字扫描软件tesseract-ocr" class="headerlink" title="文字扫描软件tesseract-ocr"></a>文字扫描软件<a href="https://github.com/tesseract-ocr" target="_blank" rel="noopener">tesseract-ocr</a></h1><p>开源的基于机器学习的文字扫描软件，有多种语言的训练数据，包括中文</p>
+<h1 id="Scandir-a-directory-iterator-that-returns-all-file-info-the-OS-provides"><a href="#Scandir-a-directory-iterator-that-returns-all-file-info-the-OS-provides" class="headerlink" title="Scandir, a directory iterator that returns all file info the OS provides."></a><strong><a href="https://pypi.org/project/scandir" target="_blank" rel="noopener">Scandir</a></strong>, a directory iterator that returns all file info the OS provides.</h1>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/05/netpbm-GnuWin32/" data-id="ck3dq3h00000u6gw28i85fju8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/25/%E4%B8%80%E4%BA%9Bpython%E6%A8%A1%E5%9D%97/" data-id="ck3dq3h0700146gw23c494xma" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2019/03/13/Jupyter%E5%AE%89%E8%A3%85%E5%A4%9AKernel/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Jupyter安装多Kernel
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/03/03/IDL%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%9F%A9%E9%98%B5%E6%AF%94%E8%BE%83%E5%A4%A7%E5%B0%8F%E5%8F%96%E5%80%BC%E7%9A%84%E6%8A%80%E5%B7%A7/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/11/25/WSL-ubuntu%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">IDL的两个矩阵比较大小取值的技巧</div>
+      <div class="article-nav-title">WSL ubuntu系统设置</div>
     </a>
   
 </nav>
