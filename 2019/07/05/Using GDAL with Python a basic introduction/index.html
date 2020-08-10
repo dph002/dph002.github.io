@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="ref:引自 Using GDAL with Python: a basic introduction​         14 Mar 2013        ​      Using GDAL with Python opens up a lot of flexibility in raster processing. By converting your raster data into a">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-05T09:43:08.824Z">
+<meta property="og:updated_time" content="2019-12-25T02:38:27.654Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -92,10 +92,53 @@
 <p><code>&lt;!--more--&gt;</code></p>
 <p>So in this very simple example, I will convert a single band georeferenced raster (GeoTiff), to a 2D NumPy array, and back again. Once the raster has been read in as an array, any raster operations are possible.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> osgeo <span class="keyword">import</span> gdal</span><br><span class="line">    <span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Read the input raster into a Numpy array</span></span><br><span class="line">    infile = <span class="string">"inputfile.tif"</span></span><br><span class="line">    data   = gdal.Open(infile)</span><br><span class="line">    arr    = data.ReadAsArray()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Do some processing....</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Save out to a GeoTiff</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># First of all, gather some information from the original file</span></span><br><span class="line">    [cols,rows] = arr.shape</span><br><span class="line">    trans       = data.GetGeoTransform()</span><br><span class="line">    proj        = data.GetProjection()</span><br><span class="line">    nodatav     = data.GetNoDataValue()</span><br><span class="line">    outfile     = <span class="string">"outputfile.tif"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Create the file, using the information from the original file</span></span><br><span class="line">    outdriver = gdal.GetDriverByName(<span class="string">"GTiff"</span>)</span><br><span class="line">    outdata   = outdriver.Create(str(outfile), rows, cols, <span class="number">1</span>, gdal.GDT_Float32)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Write the array to the file, which is the original array in this example</span></span><br><span class="line">    outdata.GetRasterBand(<span class="number">1</span>).WriteArray(arr)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Set a no data value if required</span></span><br><span class="line">    outdata.GetRasterBand(<span class="number">1</span>).SetNoDataValue(nodatav)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Georeference the image</span></span><br><span class="line">    outdata.SetGeoTransform(trans)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Write projection information</span></span><br><span class="line">    outdata.SetProjection(proj)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="图像浮点改成rgb制图"><a href="#图像浮点改成rgb制图" class="headerlink" title="图像浮点改成rgb制图"></a>图像浮点改成rgb制图</h2><p>gdal_translate ，可以把原始数据进行波段变换，比如把float的数据按指定的范围变换到Byte,形成彩色图像。</p>
+<p>下面是去6,5,2三个通道，把原始数据0-19的数据范围，变换到0-255</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdal_translate -ot Byte -b 6 -scale 0 19 0 255 -b 5 -b 2 D:\OCT2\map\H1C_OPER_OCT_L1A_20190118T161500_20190118T162000_01921_10_test.tif b.tif</span><br></pre></td></tr></table></figure>
+
+
+
+<p>也可以单独设置每个通道的变换范围，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdal_translate -ot Byte -b 6 -scale 0 19 0 255 -b 5 -scale 0 19 0 255  -b 2 -scale 0 19 0 255 D:\OCT2\map\H1C_OPER_OCT_L1A_20190118T161500_20190118T162000_01921_10_test.tif b.tif</span><br></pre></td></tr></table></figure>
+
+<h2 id="改变图像分辨率"><a href="#改变图像分辨率" class="headerlink" title="改变图像分辨率"></a>改变图像分辨率</h2><p>gdal_translate</p>
+<p>-outsize 输出范围，格式 xsize,ysize。如果有%，则按百分比输出。计算输入前后的分辨率比值，由此计算出输出文件的大小。通过文件大小控制分辨率。注意：虽然像素数目和%可能产生相同的输出，但有时因为精度问题，可能会有不同（像素大小）。</p>
+<h2 id="2-4-格式转换（可用于合成）"><a href="#2-4-格式转换（可用于合成）" class="headerlink" title="2.4 格式转换（可用于合成）"></a>2.4 格式转换（可用于合成）</h2><p>目的：改变原始图像的格式。</p>
+<p>原理：读取原始图像数据，复制到目标文件格式中（可能需要重采样，只能使用nearest）。</p>
+<p>方法：gdal_translate</p>
+<p>-of 输出格式，默认GTiff。可以修改为所有GDAL支持的格式</p>
+<p>-co create option。每种格式都有规定的co，需要查看格式说明。如：JPEG格式，可以使用WORLDFILE=YES（生成worldfile文 件），QUALITY=75（设置压缩率，默认是75%，只能取10~100范围的值，&gt;95无法提高质量，但会增大文件）。</p>
+<p>效率很高。</p>
+<p>示例：</p>
+<p>gdal_translate -of GTiff j50c.vrt translate.tif</p>
+<p>gdal_translate -of JPEG j50c4.vrt translatejpeg.jpg</p>
+<p>gdal_translate -of JPEG -co WORLDFILE=YES -coQUALITY=75 j50c4.vrt</p>
+<p> translatejpeg75.jpg</p>
+<h2 id="2-5-转换为JPEG"><a href="#2-5-转换为JPEG" class="headerlink" title="2.5 转换为JPEG"></a>2.5 转换为JPEG</h2><p>目的：将其它格式转换为JPEG的RGB格式。</p>
+<p>原理：指定源数据的波段与目标JPEG的对应波段。</p>
+<p>方法：gdal_translate</p>
+<p>-b n:指定第几个波段对应的源数据波段数n。可以有多个。如果不指定，默认情况下是一一对应。</p>
+<p>示例：将四波段RGBA的tif转换成JPEG RGB。</p>
+<p>gdal_translate -of JPEG -b 1 -b 2 -b 3 source.tiftest.jpg</p>
+<p>默认情况下：gdal_translate -of JPEG source.tif test.jpg 等效于 gdal_translate-of JPEG -b 1 -b 2 -b 3 -b 4 source.tif test.jpg，都是将RGBA转换为JPEG中，使用四个4BYTES存储一个像素，会被当作CMYK处理。</p>
+<p>参考：<a href="http://osdir.com/ml/gdal-development-gis-osgeo/2014-06/msg00046.html" target="_blank" rel="noopener">http://osdir.com/ml/gdal-development-gis-osgeo/2014-06/msg00046.html</a></p>
+<h2 id="2-6-定义坐标系统（不能进行投影变换，只能定义）"><a href="#2-6-定义坐标系统（不能进行投影变换，只能定义）" class="headerlink" title="2.6 定义坐标系统（不能进行投影变换，只能定义）"></a>2.6 定义坐标系统（不能进行投影变换，只能定义）</h2><p>目的：为源图像指定坐标系统。</p>
+<p>原理：重新定义源图像的坐标系统（不能变换，只能定义，不改变图像值）。</p>
+<p>方法：gdal_translate</p>
+<p>-a_srs assign srs指定的坐标系统。</p>
+<p>示例：</p>
+<p>gdal_translate -a_srs EPSG:32650 -of GTiff J50_lonlat-L12.tif j50-2.tif</p>
+<h2 id="重投影图像到更大的地理坐标范围"><a href="#重投影图像到更大的地理坐标范围" class="headerlink" title="重投影图像到更大的地理坐标范围"></a>重投影图像到更大的地理坐标范围</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdalwarp -overwrite -t_srs EPSG:4326 -te -102 0 -50 30 D:\OCT2\map\B.tif  e.tif</span><br></pre></td></tr></table></figure>
+
+<p>上面还可以用 -ts 4000 2000 设置图像的大小</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/05/Using%20GDAL%20with%20Python%20a%20basic%20introduction/" data-id="ck3dq3gzr000f6gw2goaubku3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/05/Using%20GDAL%20with%20Python%20a%20basic%20introduction/" data-id="ckdo90nu6000fzsv0ecoje0hf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
@@ -106,11 +149,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/11/05/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/11/22/opencv/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Hello World
+          opencv
         
       </div>
     </a>
@@ -163,7 +206,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
     </div>
   </div>
 
@@ -176,6 +219,10 @@
       <ul>
         
           <li>
+            <a href="/2020/04/09/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/25/%E4%B8%80%E4%BA%9Bpython%E6%A8%A1%E5%9D%97/">一些python模块</a>
           </li>
         
@@ -185,10 +232,6 @@
         
           <li>
             <a href="/2019/11/22/opencv/">opencv</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/05/hello-world/">Hello World</a>
           </li>
         
           <li>
@@ -207,7 +250,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 John Doe<br>
+      &copy; 2020 John Doe<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
